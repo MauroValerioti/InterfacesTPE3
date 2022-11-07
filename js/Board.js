@@ -1,5 +1,7 @@
 class Board{
 
+    //Se crea la matriz del tablero
+    
     constructor(context){
         this.context = context;
         this.slot = [];

@@ -12,17 +12,23 @@ document.addEventListener("DOMContentLoaded", function(event) {
         winnerInfo.classList.add('hide');
         drawInfo.classList.add('hide');
     }
+
+    //verifica si se hizo click en una ficha
     const onMouseDown = e => {
         let x = e.layerX - e.currentTarget.offsetLeft;
         let y = e.layerY - e.currentTarget.offsetTop;            
         game.isClickedToken(x, y);
     }
+
+    //mueve el punto en el canvas o la figura
     const onMouseMove = e => {
         let x = e.layerX - e.currentTarget.offsetLeft;
         let y = e.layerY - e.currentTarget.offsetTop;   
         if (game.haveClickedToken())
             game.moveToken(x, y);
     }
+
+    //devuelve la posición del click
     const onMouseUp = e => {
         let x = e.layerX - e.currentTarget.offsetLeft;
         let y = e.layerY - e.currentTarget.offsetTop;

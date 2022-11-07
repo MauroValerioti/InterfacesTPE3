@@ -55,7 +55,7 @@ class Token{
     setStatus(status) {
         this.status = status;
     }
-
+    //Devuelve si se hizo click dentro de la ficha
     isClicked(x, y) {
         var xLayer = x - this.x;
         var yLayer = y - this.y;
@@ -63,6 +63,7 @@ class Token{
     }
 
     draw(){
+        //Dibuja la ficha
         this.context.beginPath();
         this.context.arc(this.x, this.y, this.radio, 0, Math.PI*2);
         this.context.fillStyle = '#ffffff';
@@ -73,6 +74,7 @@ class Token{
             this.context.stroke();
         }
        
+        //Dibuja la ficha en la posicion indicada
         this.context.drawImage(this.image, this.x - this.radio - 6, this.y - this.radio - 6);
         this.context.closePath();
         this.image.onload = () => {
