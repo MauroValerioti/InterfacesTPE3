@@ -51,9 +51,6 @@ class Token{
         this.y = y;
     }
 
-    setColor(param){
-        this.param = param;
-    }
     //setea el status
     setStatus(status) {
         this.status = status;
