@@ -12,7 +12,7 @@ class Board{
         this.winnerPosition = '';
         this.initSlot();
     }
-
+    //inicializa las ranuras de entrada par alas fichas.
     initSlot() {
         let diferenciaX = 95;
         let diferenciaY = 65;
@@ -32,7 +32,7 @@ class Board{
             fy += diferenciaY;           
         }
     }
-    
+    //crea el tablero base onde se colocan las fichas y el tablero del juego.
     drawBoard() {
         this.context.fillStyle = '#FFD1AA';//color del fondo.
         this.context.fillRect(0,0,1100,550);            
@@ -51,7 +51,7 @@ class Board{
             return this.searchSlot(x, currentToken);
         return false;
     } 
-
+    //busca una ranura habilitada para insertar la ficha.
     searchSlot(x, currentToken) {
         for(let i = 0; i < 7; i++) {
             if (this.slotX[i] > x - 25 && this.slotX[i] < x + 25){
@@ -60,7 +60,7 @@ class Board{
         };
         return false;
     }
-
+    //inserta la ficha en una posicion.
     insertToken(x, currentToken) {
         let posTmpY = -1;
         let couldInsert = false;        
@@ -80,7 +80,7 @@ class Board{
         }        
         return couldInsert;  
     }
-
+    //chequea verticalmente si hay algun ganador.
     checkVertical() {
         let count = 0;
         let player = -1;
@@ -103,7 +103,7 @@ class Board{
                 }
                 else
                     count++;
-                
+                //si hay un ganador retorna el resultado.
                 if (count === 4){                    
                     isWinner = true; 
                     this.winnerPosition = 'vertical';
@@ -117,7 +117,7 @@ class Board{
         this.finalSlotWinner.y = -1;
         return isWinner;
     }
-
+    //chequea horizontalmente si hay algun ganador.
     checkHorizontal() {
         let count = 0;
         let player = -1;
@@ -140,7 +140,7 @@ class Board{
                 }
                 else
                     count++;
-                
+                //si hay un ganador retorna el resultado.
                 if (count === 4){
                     isWinner = true;
                     this.winnerPosition = 'horizontal';
@@ -154,14 +154,14 @@ class Board{
         this.finalSlotWinner.y = -1;
         return isWinner;
     }
-
+    //chequea diagonalmente si hay algun ganador.
     checkDiagonal(){
         let isWinner = false;
         if (this.checkRightDiagonal() || this.checkLeftDiagonal())
             isWinner = true;
         return isWinner;
     }
-
+    //chequea la diagonal derecha.
     checkRightDiagonal() {
         let isWinner = false;
         for (let row = 3; row < 7; row++) {
@@ -181,7 +181,7 @@ class Board{
                             fourInLine = true;
                     }
                 }
-
+                //si hay un ganador retorna el resultado.
                 if (fourInLine){
                     isWinner = true;
                     this.winnerPosition = 'rightDiagonal';
@@ -197,7 +197,7 @@ class Board{
         this.finalSlotWinner.y = -1;
         return isWinner;
     }
-
+    //chequea la diagonal izquierda.
     checkLeftDiagonal() {
         let isWinner = false;
         for (let row = 6; row > 2; row--) {
@@ -217,7 +217,7 @@ class Board{
                             fourInLine = true;
                     }
                 }
-
+                //si hay un ganador retorna el resultado.
                 if (fourInLine){
                     isWinner = true;
                     this.winnerPosition = 'leftDiagonal';

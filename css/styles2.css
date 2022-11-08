@@ -430,7 +430,7 @@ footer{
 }
 
 .fondo-imagen-lanzamiento{
-    background-image:url("./Imagenes/PuppyPlaytime6.jpg");
+    background-image:url("/Imagenes/PuppyPlaytime6.jpg");
     background-repeat: no-repeat;
 
 }
@@ -440,7 +440,7 @@ footer{
 }
 
 .playtime3{
-    background-image: url("./Imagenes/PuppyPlaytime8.jpg");
+    background-image: url("/Imagenes/PuppyPlaytime9.jpg");
     background-size: cover;
 }
 
@@ -458,13 +458,13 @@ footer{
 }
 
 .adelantos{
-    background-image: url("./Imagenes/PuppyPlaytime7.jpg");
+    background-image: url("/Imagenes/PuppyPlaytime7.jpg");
     background-size: cover;
     background-repeat: no-repeat;
 }
 
 .compradores{
-    background-image: url("./Imagenes/PuppyPlaytime6.jpg");
+    background-image: url("/Imagenes/PuppyPlaytime6.jpg");
     background-repeat: no-repeat;
     font-size: 2.5vw;
     height: 100vh;
