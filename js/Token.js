@@ -1,4 +1,5 @@
 class Token{
+    //constructor de la ficha.
     constructor(x, y, param, player){
         this.x = x;
         this.y = y;
@@ -10,26 +11,27 @@ class Token{
         this.getTokekImage(param)
     }
 
+    //genera la respectiva ficha segun el jugador que corresponda.
     getTokekImage(param) {
         if(param === 'p1')
-            this.image.src = './images/ficha1.png';
+            this.image.src = './images/ficha1.png'; //ficha jugador 1.
         else if (param === 'p2')
-            this.image.src = 'images/ficha2.png';
+            this.image.src = 'images/ficha2.png'; //ficha jugador 2.
         else if (param === 'empty')
-            this.image.src = './images/ficha-vacia.png';
+            this.image.src = './images/ficha-vacia.png'; //espacio donde va la ficha a insertar en el tablero.
     }
-
+    //retorna el jugador actual.
     getPlayer(){
         if (this.player === 0)
             return this.player;
         else 
             return this.player.getPlayerNumber();
     }
-
+    //retorna el nombre del jugador actual.
     getName() {
         return this.player.getName();
     }
-
+    //retorna el estado del jugador actual.
     getStatus() {
         return this.status;
     }
@@ -40,10 +42,11 @@ class Token{
     setHighlighted(value) {
         this.highlighted = value;
     }
+    //setea la posicion en x.
     setX(x) {
         this.x = x;
     }
-
+//setea la posicion en y.
     setY(y) {
         this.y = y;
     }
@@ -51,7 +54,7 @@ class Token{
     setColor(param){
         this.param = param;
     }
-
+    //setea el status
     setStatus(status) {
         this.status = status;
     }
@@ -66,14 +69,13 @@ class Token{
         //Dibuja la ficha
         this.context.beginPath();
         this.context.arc(this.x, this.y, this.radio, 0, Math.PI*2);
-        this.context.fillStyle = '#ffffff';
+        this.context.fillStyle = '#ff9a01';
         this.context.fill();
         if (this.highlighted === true) {
             this.context.strokeStyle = this.highlightedStyle;
             this.context.lineWidth = 5;
             this.context.stroke();
         }
-       
         //Dibuja la ficha en la posicion indicada
         this.context.drawImage(this.image, this.x - this.radio - 6, this.y - this.radio - 6);
         this.context.closePath();

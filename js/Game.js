@@ -1,4 +1,5 @@
 class Game{
+    //define todos los elementos que tendra el juego dentro del Canvas.
     constructor(canvas){
         this.canvas = canvas;
         this.context = canvas.getContext('2d');
@@ -16,14 +17,14 @@ class Game{
         this.drawInitialTokens();
         this.startGame();
     }
-
+    //define las posiciones donde iran las fichas de cada jugador.
     drawInitialTokens(){
         let xInitialPositionP1 = 50;
         let xInitialPositionP2 = 920;
         this.drawPlayerToken(xInitialPositionP1, 'p1', this.player1);
         this.drawPlayerToken(xInitialPositionP2, 'p2', this.player2);
     }
-
+    //dibujas las fichas del jugador.
     drawPlayerToken(xInitial, param, jugador) {
         let tmpY = 130;
         for (let row = 0; row < 7; row++) {
@@ -37,23 +38,23 @@ class Game{
             tmpY += 65;
         } 
     }
-
+    //inicializa el juego.
     startGame() {
         this.board.drawBoard();       
     }
-
+    //prepara el juego.
     prepareGame(){        
         this.board.drawBoard();       
         this.setTokens();
         this.checkCurrentTurn();
     }
-
+    //inserta las fichas.
     setTokens() {
         for (let i = 0; i < this.tokens.length; i++){
             this.tokens[i].draw();
         }
     }
-
+    //chequea a quien le corresponde mover la ficha.
     checkCurrentTurn() {
         if (this.turn === 1){
             document.querySelector('#J1').classList.add('current-shift');
@@ -86,19 +87,19 @@ class Game{
     haveClickedToken() {
         return this.clickedToken;
     }
-
+    //genera el desplazamiento de la ficha.
     moveToken(x, y) {
         this.currentToken.x = x;
         this.currentToken.y = y;
         this.tokens.push(this.currentToken);
         this.prepareGame();
     }
-
+    //vuelve la ficha a su posicion original.
     resetclickedToken() {
         this.currentToken = null;
         this.clickedToken = false;
     }
-
+    //inserta la ficha donde corresponda segun donde se la haya colocado.
     insertToken(x, y){
 
         if(this.board.couldInsertToken(x, y, this.currentToken)){
@@ -128,7 +129,7 @@ class Game{
         this.resetclickedToken();
         this.prepareGame();
     }
-
+    //chequea si hay alguna jugada ganadora
     isWinner(){
         let isWinner = false;
         if(this.board.checkVertical() || this.board.checkHorizontal() ||
@@ -136,4 +137,11 @@ class Game{
             isWinner = true;
         return isWinner;
     }
+
+    //function temporizador(){
+    //   console.log("Juego Terminado!");
+   // }
+    
+    //setTimeout(temporizador, 60000);
+
 }

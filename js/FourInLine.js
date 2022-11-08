@@ -1,11 +1,13 @@
 document.addEventListener("DOMContentLoaded", function(event) {
 
+    //selecciona los elementos del DOM
     let canvas = document.querySelector('#board');
     let startGame = document.querySelector('#start-game');
     let winnerInfo = document.querySelector('#winner-info');
     let drawInfo = document.querySelector('#draw-info');
     let game = new Game(canvas);
 
+    //inicia un nuevo juego
     const playGame = ()  => {
         game = new Game(canvas);
         game.prepareGame();
@@ -20,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         game.isClickedToken(x, y);
     }
 
-    //mueve el punto en el canvas o la figura
+    //mueve la ficha en el canvas
     const onMouseMove = e => {
         let x = e.layerX - e.currentTarget.offsetLeft;
         let y = e.layerY - e.currentTarget.offsetTop;   
@@ -28,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
             game.moveToken(x, y);
     }
 
-    //devuelve la posición del click
+    //inserta la ficha en la posicion que fue soltada
     const onMouseUp = e => {
         let x = e.layerX - e.currentTarget.offsetLeft;
         let y = e.layerY - e.currentTarget.offsetTop;
@@ -37,6 +39,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         }
     }
     
+    //agrega los respectivos eventos.
     startGame.addEventListener('click', playGame, false);
     canvas.addEventListener('mousedown', onMouseDown, false);
     canvas.addEventListener('mousemove', onMouseMove, false);

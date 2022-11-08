@@ -1,7 +1,6 @@
 class Board{
 
-    //Se crea la matriz del tablero
-    
+    //Se crea el tablero
     constructor(context){
         this.context = context;
         this.slot = [];
@@ -35,13 +34,13 @@ class Board{
     }
     
     drawBoard() {
-        this.context.fillStyle = '#FFD1AA';
+        this.context.fillStyle = '#FFD1AA';//color del fondo.
         this.context.fillRect(0,0,1100,550);            
-        this.context.fillStyle="#407F7F";
+        this.context.fillStyle="#000000"; //color del tablero.
         this.context.fillRect(260,95,600,460);
         for (let row = 0; row < this.slotX.length; row++) {
             for (let col = 0; col < this.slotY.length; col++) {
-               let token = this.slot[this.slotY[col]+'-row'][this.slotX[row]+'-col'];
+                let token = this.slot[this.slotY[col]+'-row'][this.slotX[row]+'-col'];
                 token.draw();
             }   
         }
